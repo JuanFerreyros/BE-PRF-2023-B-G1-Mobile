@@ -14,8 +14,8 @@ class StationAdapter (
 )  : RecyclerView.Adapter<StationAdapter.StationViewHolder>(){
 
     class StationViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val stationName: TextView = itemView.findViewById(R.id.stationName)
-        val stationStatus: TextView = itemView.findViewById(R.id.stationStatus)
+        val stationName: TextView = itemView.findViewById(R.id.requestName)
+        val stationStatus: TextView = itemView.findViewById(R.id.requestStatus)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StationViewHolder {
