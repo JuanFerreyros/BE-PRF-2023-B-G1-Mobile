@@ -5,7 +5,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object APIServiceBuilder {
-    private const val BASE_URL = "http://172.29.224.1:8080/api/v1/"
+    private const val BASE_URL = "http://192.168.100.112:8080/api/v1/"
     private const val API_KEY = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2ODQzNjg2NTUsImV4cCI6MTcxNTkwNDY1NSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsImlkIjoiMiIsInJvbCI6InVzZXIifQ.4MrjfaEglT5NOHLsf_cldZCcxbUX8vNC62qoLp9XpaY"
 
     private val okHttpClient = OkHttpClient.Builder()
@@ -24,7 +24,11 @@ object APIServiceBuilder {
         .client(okHttpClient)
         .build()
 
-    fun create(): StationService {
+    fun createStationService(): StationService {
         return retrofit.create(StationService::class.java)
+    }
+
+    fun createRequestService(): RequestService {
+        return retrofit.create(RequestService::class.java)
     }
 }

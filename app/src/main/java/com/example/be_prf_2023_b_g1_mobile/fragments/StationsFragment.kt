@@ -29,7 +29,7 @@ class StationsFragment : Fragment() {
     ): View? {
         thisView = inflater.inflate(R.layout.fragment_stations, container, false)
         recycleStations = thisView.findViewById(R.id.recycleStations)
-        val service = APIServiceBuilder.create()
+        val service = APIServiceBuilder.createStationService()
 
         service.getStations().enqueue(
             object : Callback<List<StationResponse>> {
