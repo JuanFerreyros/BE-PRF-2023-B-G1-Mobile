@@ -1,60 +1,69 @@
 package com.example.be_prf_2023_b_g1_mobile.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.APIServiceBuilder
+import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.RequestService
 import com.example.be_prf_2023_b_g1_mobile.R
+import com.example.be_prf_2023_b_g1_mobile.model.RequestResponse
+import com.example.be_prf_2023_b_g1_mobile.recycleViewAdapter.RequestAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RequestsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RequestsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    lateinit var thisView: View
+    lateinit var recycleRequests: RecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        thisView = inflater.inflate(R.layout.fragment_requests, container, false)
+        recycleRequests = thisView.findViewById(R.id.recycleRequests)
+
+        val  btnGoToNewRequest = thisView.findViewById<FloatingActionButton>(R.id.goToNewRequest)
+
+        btnGoToNewRequest.setOnClickListener{
+
+            val action = RequestsFragmentDirections.actionRequestsFragmentToNewRequestFragment()
+            thisView.findNavController().navigate(action)
         }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_requests, container, false)
-    }
+        val service = APIServiceBuilder.createRequestService()
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment SolicitudesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RequestsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        service.getRequests().enqueue(
+            object : Callback<List<RequestResponse>> {
+                override fun onResponse(
+                    call: Call<List<RequestResponse>>,
+                    response: Response<List<RequestResponse>>
+                ) {
+                    showData(response.body()!!)
+                }
+
+                override fun onFailure(call: Call<List<RequestResponse>>, t: Throwable) {
+                    Log.e("RETROFIT",
+                        "An error occurred while requesting requests. ERROR: ${t.message}")
                 }
             }
+        )
+
+        return thisView
+    }
+
+    private fun showData(requestList: List<RequestResponse>){
+        recycleRequests.setHasFixedSize(true)
+        val linearLayoutManager = LinearLayoutManager(context)
+        recycleRequests.layoutManager = linearLayoutManager
+        recycleRequests.adapter = RequestAdapter(requestList)
     }
 }

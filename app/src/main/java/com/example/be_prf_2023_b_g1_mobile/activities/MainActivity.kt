@@ -2,66 +2,49 @@ package com.example.be_prf_2023_b_g1_mobile.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.MenuItem
-import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
+import android.widget.ImageView
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupWithNavController
 import com.example.be_prf_2023_b_g1_mobile.R
-import com.example.be_prf_2023_b_g1_mobile.fragments.MapFragment
-import com.example.be_prf_2023_b_g1_mobile.fragments.ProfileFragment
-import com.example.be_prf_2023_b_g1_mobile.fragments.RequestsFragment
-import com.example.be_prf_2023_b_g1_mobile.fragments.StationsFragment
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var toggle: ActionBarDrawerToggle
-    lateinit var drawerLayout: DrawerLayout
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navHostFragment: NavHostFragment
+    lateinit var navigationView: NavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        supportActionBar?.hide()
+
+        val imgMenu = findViewById<ImageView>(R.id.open_drawer)
 
         drawerLayout = findViewById(R.id.drawerLayout)
-        val navView : NavigationView = findViewById(R.id.navigationView)
+        navigationView = findViewById(R.id.nav_view)
+        navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
 
-        toggle = ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        navView.setNavigationItemSelectedListener {
-
-            it.isChecked = true
-
-            when(it.itemId){
-                R.id.nav_stations -> replaceFragment(StationsFragment(), it.title.toString())
-                R.id.nav_requests -> replaceFragment(RequestsFragment(), it.title.toString())
-                R.id.nav_map -> replaceFragment(MapFragment(), it.title.toString())
-                R.id.nav_profile -> replaceFragment(ProfileFragment(), it.title.toString())
-            }
-            true
+        imgMenu.setOnClickListener {
+            drawerLayout.openDrawer(GravityCompat.START)
         }
 
+        setUpDrawerLayout()
     }
 
-    private fun replaceFragment(fragment: Fragment, title: String){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.frameLayout,fragment)
-        fragmentTransaction.commit()
-        drawerLayout.closeDrawers()
-        setTitle(title)
-    }
+    private fun setUpDrawerLayout() {
+        val navController = navHostFragment.navController
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(toggle.onOptionsItemSelected(item)){
-            return true
+        navigationView.setupWithNavController(navController)
+
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+
+        navController.addOnDestinationChangedListener { _, _, _ ->
+            supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
         }
-
-        return super.onOptionsItemSelected(item)
     }
 }

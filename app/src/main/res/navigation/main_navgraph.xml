@@ -3,31 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navgraph"
-    app:startDestination="@id/requestsFragment">
+    app:startDestination="@id/stationsFragment">
 
     <fragment
         android:id="@+id/stationsFragment"
         android:name="com.example.be_prf_2023_b_g1_mobile.fragments.StationsFragment"
         android:label="fragment_stations"
-        tools:layout="@layout/fragment_stations" />
+        tools:layout="@layout/fragment_stations" >
+        <action
+            android:id="@+id/action_stationsFragment_to_newRequestFragment"
+            app:destination="@id/newRequestFragment" />
+    </fragment>
     <fragment
         android:id="@+id/requestsFragment"
         android:name="com.example.be_prf_2023_b_g1_mobile.fragments.RequestsFragment"
         android:label="fragment_requests"
-        tools:layout="@layout/fragment_requests" />
+        tools:layout="@layout/fragment_requests" >
+        <action
+            android:id="@+id/action_requestsFragment_to_newRequestFragment"
+            app:destination="@id/newRequestFragment" />
+    </fragment>
     <fragment
-        android:id="@+id/stationDetailsFragment"
-        android:name="com.example.be_prf_2023_b_g1_mobile.fragments.StationDetailsFragment"
-        android:label="fragment_station_details"
-        tools:layout="@layout/fragment_station_details" />
+        android:id="@+id/mapFragment"
+        android:name="com.example.be_prf_2023_b_g1_mobile.fragments.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
     <fragment
-        android:id="@+id/requestFragment"
-        android:name="com.example.be_prf_2023_b_g1_mobile.fragments.RequestFragment"
-        android:label="fragment_request"
-        tools:layout="@layout/fragment_request" />
+        android:id="@+id/profileFragment"
+        android:name="com.example.be_prf_2023_b_g1_mobile.fragments.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/stationEditFragment"
-        android:name="com.example.be_prf_2023_b_g1_mobile.fragments.StationEditFragment"
-        android:label="fragment_station_edit"
-        tools:layout="@layout/fragment_station_edit" />
+        android:id="@+id/newRequestFragment"
+        android:name="com.example.be_prf_2023_b_g1_mobile.fragments.NewRequestFragment"
+        android:label="fragment_new_request"
+        tools:layout="@layout/fragment_new_request" >
+        <action
+            android:id="@+id/action_newRequestFragment_to_stationsFragment"
+            app:destination="@id/stationsFragment" />
+    </fragment>
 </navigation>

@@ -1,0 +1,34 @@
+package com.example.be_prf_2023_b_g1_mobile.recycleViewAdapter
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import com.example.be_prf_2023_b_g1_mobile.R
+import com.example.be_prf_2023_b_g1_mobile.model.RequestResponse
+
+class RequestAdapter (
+    private var requestList: List<RequestResponse>
+    ) : RecyclerView.Adapter<RequestAdapter.RequestViewHolder>() {
+
+    class RequestViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
+        val requestName: TextView = itemView.findViewById(R.id.requestName)
+        val requestStatus: TextView = itemView.findViewById(R.id.requestStatus)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RequestAdapter.RequestViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.request_item, parent, false)
+        return RequestAdapter.RequestViewHolder(view)
+    }
+
+    override fun getItemCount(): Int = requestList.size
+
+    override fun onBindViewHolder(holder: RequestViewHolder, position: Int) {
+        val request = requestList[position]
+
+        holder.requestName.text = request.name
+        holder.requestStatus.text = request.status
+
+    }
+}
