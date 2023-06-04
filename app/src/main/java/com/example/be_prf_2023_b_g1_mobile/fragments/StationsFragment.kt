@@ -1,60 +1,60 @@
 package com.example.be_prf_2023_b_g1_mobile.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.APIServiceBuilder
+import com.example.be_prf_2023_b_g1_mobile.model.StationResponse
 import com.example.be_prf_2023_b_g1_mobile.R
+import com.example.be_prf_2023_b_g1_mobile.recycleViewAdapter.StationAdapter
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [StationsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class StationsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
+    lateinit var thisView: View
+    lateinit var recycleStations: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stations, container, false)
-    }
+        thisView = inflater.inflate(R.layout.fragment_stations, container, false)
+        recycleStations = thisView.findViewById(R.id.recycleStations)
+        val service = APIServiceBuilder.create()
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EstacionesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            StationsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+        service.getStations().enqueue(
+            object : Callback<List<StationResponse>> {
+                override fun onResponse(
+                    call: Call<List<StationResponse>>,
+                    response: Response<List<StationResponse>>
+                ) {
+                    showData(response.body()!!)
+                }
+
+                override fun onFailure(call: Call<List<StationResponse>>, t: Throwable) {
+                    Log.e("RETROFIT",
+                        "An error occurred while requesting stations. ERROR: ${t.message}")
                 }
             }
+        )
+
+        return thisView
     }
+
+    private fun showData(stationList: List<StationResponse>){
+        recycleStations.setHasFixedSize(true)
+        val linearLayoutManager = LinearLayoutManager(context)
+        recycleStations.layoutManager = linearLayoutManager
+        recycleStations.adapter = StationAdapter(stationList)
+    }
+
 }

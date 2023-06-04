@@ -16,4 +16,5 @@
     <color name="colorPrimaryTextLight">#212121</color>
     <color name="colorBtnLogin">#1976D2</color>
     <color name="colorBtnApprove">#2E7D32</color>
+    <color name="grey">#A8BEE4</color>
 </resources>
