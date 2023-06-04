@@ -16,4 +16,21 @@
     <string name="password">Contraseña</string>
     <string name="token">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE2ODQzNjg2NTUsImV4cCI6MTcxNTkwNDY1NSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsImlkIjoiMiIsInJvbCI6InVzZXIifQ.4MrjfaEglT5NOHLsf_cldZCcxbUX8vNC62qoLp9XpaY</string>
     <string name="id_user">2</string>
+    <string name="station_details">Detalles de la Estación</string>
+    <string name="request_details">Detalles de la Solicitud</string>
+    <string name="name">Nombre</string>
+    <string name="serial_number">Nº de Serie</string>
+    <string name="status">Estado</string>
+    <string name="brand">Marca</string>
+    <string name="model">Modelo</string>
+    <string name="longitude">Longitud</string>
+    <string name="latitude">Latidud</string>
+    <string name="user_name">Solicitante</string>
+    <string name="created_at">Fecha de Creación</string>
+    <string name="approved_at">Fecha de Aprobación</string>
+    <string name="edit">Editar</string>
+    <string name="suspend">Inactivar</string>
+    <string name="station">Estación</string>
+    <string name="approve">Aprobar</string>
+    <string name="reject">Rechazar</string>
 </resources>
