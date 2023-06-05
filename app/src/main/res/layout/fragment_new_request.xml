@@ -14,8 +14,8 @@
 
         <TextView
             android:id="@+id/text_details"
-            android:layout_width="211dp"
-            android:layout_height="29dp"
+            android:layout_width="205dp"
+            android:layout_height="27dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="184dp"
@@ -73,6 +73,7 @@
                     android:fontFamily="@font/product_sans_regular"
                     android:hint="@string/name"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/rqt_name"
                     app:layout_constraintTop_toTopOf="@+id/rqt_name" />
 

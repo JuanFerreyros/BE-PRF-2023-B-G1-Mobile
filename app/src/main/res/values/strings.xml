@@ -34,6 +34,6 @@
     <string name="approve">Aprobar</string>
     <string name="reject">Rechazar</string>
     <string name="request">Solicitudes</string>
-    <string name="request_station">Solicitud de estaciones</string>
+    <string name="request_station">Solicitud de Estación</string>
     <string name="cancel">Cancelar</string>
 </resources>
