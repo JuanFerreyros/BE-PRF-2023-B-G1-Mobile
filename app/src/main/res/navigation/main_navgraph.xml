@@ -11,8 +11,9 @@
         android:label="fragment_stations"
         tools:layout="@layout/fragment_stations" >
         <action
-            android:id="@+id/action_stationsFragment_to_newRequestFragment"
-            app:destination="@id/newRequestFragment" />
+            android:id="@+id/action_stationsFragment_to_stationDetailsFragment"
+            app:destination="@id/stationDetailsFragment" >
+        </action>
     </fragment>
     <fragment
         android:id="@+id/requestsFragment"
@@ -20,8 +21,8 @@
         android:label="fragment_requests"
         tools:layout="@layout/fragment_requests" >
         <action
-            android:id="@+id/action_requestsFragment_to_newRequestFragment"
-            app:destination="@id/newRequestFragment" />
+            android:id="@+id/action_requestsFragment_to_requestFragment"
+            app:destination="@id/requestFragment" />
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
@@ -34,12 +35,21 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/newRequestFragment"
-        android:name="com.example.be_prf_2023_b_g1_mobile.fragments.NewRequestFragment"
-        android:label="fragment_new_request"
-        tools:layout="@layout/fragment_new_request" >
-        <action
-            android:id="@+id/action_newRequestFragment_to_stationsFragment"
-            app:destination="@id/stationsFragment" />
+        android:id="@+id/stationDetailsFragment"
+        android:name="com.example.be_prf_2023_b_g1_mobile.fragments.StationDetailsFragment"
+        android:label="fragment_station_details"
+        tools:layout="@layout/fragment_station_details" >
+        <argument
+            android:name="stationSerial"
+            app:argType="com.example.be_prf_2023_b_g1_mobile.model.StationResponse" />
+    </fragment>
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.example.be_prf_2023_b_g1_mobile.fragments.RequestDetailsFragment"
+        android:label="fragment_request_details"
+        tools:layout="@layout/fragment_request_details" >
+        <argument
+            android:name="request_serial"
+            app:argType="com.example.be_prf_2023_b_g1_mobile.model.RequestResponse" />
     </fragment>
 </navigation>
