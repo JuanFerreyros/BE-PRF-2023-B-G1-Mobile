@@ -226,12 +226,7 @@
             android:backgroundTint="#F44336"
             android:fontFamily="@font/product_sans_bold"
             android:text="@string/reject"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_approve" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
