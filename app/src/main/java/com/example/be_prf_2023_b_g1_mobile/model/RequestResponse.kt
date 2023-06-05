@@ -1,5 +1,7 @@
 package com.example.be_prf_2023_b_g1_mobile.model
 
+import java.io.Serializable
+
 data class RequestResponse(
     val _id: String,
     val serial_number: String,
@@ -14,4 +16,4 @@ data class RequestResponse(
     val approved_by: Int,
     val approved_at: String,
     val user: User
-)
+): Serializable
