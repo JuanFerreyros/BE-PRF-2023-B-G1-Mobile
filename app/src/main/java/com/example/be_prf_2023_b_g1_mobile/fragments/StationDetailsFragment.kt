@@ -5,56 +5,47 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import androidx.navigation.findNavController
 import com.example.be_prf_2023_b_g1_mobile.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [StationDetailsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class StationDetailsFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+
+    lateinit var vista: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_station_details, container, false)
+        vista = inflater.inflate(R.layout.fragment_station_details, container, false)
+
+        val station = StationDetailsFragmentArgs.fromBundle(requireArguments()).stationSerial
+
+        vista.findViewById<TextView>(R.id.txt_station_name).text = station.name
+        vista.findViewById<TextView>(R.id.txt_email).text = station.user.mail
+        vista.findViewById<TextView>(R.id.txt_created_at).text = station.created_at
+        vista.findViewById<TextView>(R.id.txt_brand).text = station.brand
+        vista.findViewById<TextView>(R.id.txt_serial_number).text = station.serial_number
+        vista.findViewById<TextView>(R.id.txt_status).text = station.status
+        vista.findViewById<TextView>(R.id.txt_user).text = station.user.user_name
+        vista.findViewById<TextView>(R.id.txt_longitude).text = station.longitude.toString()
+        vista.findViewById<TextView>(R.id.txt_latitude).text = station.latitude.toString()
+        vista.findViewById<TextView>(R.id.txt_model).text = station.model
+
+        val btn_back = vista.findViewById<Button>(R.id.btn_back_stations)
+
+        btn_back.setOnClickListener{
+            val action = StationDetailsFragmentDirections.actionStationDetailsFragmentToStationsFragment()
+            it.findNavController().navigate(action)
+        }
+
+        return vista
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment StationDetailsFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            StationDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

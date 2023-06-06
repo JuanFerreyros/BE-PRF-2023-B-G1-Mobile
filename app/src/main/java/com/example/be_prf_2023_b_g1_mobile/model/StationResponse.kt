@@ -1,6 +1,8 @@
 package com.example.be_prf_2023_b_g1_mobile.model
 
-data class StationResponse(
+import java.io.Serializable
+
+data class StationResponse (
      val _id: String,
      val serial_number: String,
      val name: String,
@@ -12,7 +14,7 @@ data class StationResponse(
      val created_by: Int,
      val created_at: String,
      val user: User
-)
+): Serializable
 
 data class User(
      val id: Int,
