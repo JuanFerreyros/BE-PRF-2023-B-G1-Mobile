@@ -43,155 +43,174 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_details">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp"
-                >
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:id="@+id/lbl_serial_number"
+                <LinearLayout
+                    android:id="@+id/vertical_layout_station"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    tools:layout_editor_absoluteX="10dp"
+                    tools:layout_editor_absoluteY="4dp"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <TextView
+                        android:id="@+id/lbl_serial_number"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/serial_number" />
+
+                    <TextView
+                        android:id="@+id/txt_serial_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
+
+                    <TextView
+                        android:id="@+id/lbl_station_name"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name" />
+
+                    <TextView
+                        android:id="@+id/txt_station_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
+
+                    <TextView
+                        android:id="@+id/lbl_created_at"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/created_at" />
+
+                    <TextView
+                        android:id="@+id/txt_created_at"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
+
+                    <TextView
+                        android:id="@+id/lbl_model"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/model" />
+
+                    <TextView
+                        android:id="@+id/txt_model"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
+
+                    <TextView
+                        android:id="@+id/lbl_brand"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/brand" />
+
+                    <TextView
+                        android:id="@+id/txt_brand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
+
+                    <TextView
+                        android:id="@+id/lbl_status"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status" />
+
+                    <TextView
+                        android:id="@+id/txt_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
+
+                    <TextView
+                        android:id="@+id/lbl_longitude"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/longitude" />
+
+                    <TextView
+                        android:id="@+id/txt_longitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
+
+                    <TextView
+                        android:id="@+id/lbl_latitude"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/latitude" />
+
+                    <TextView
+                        android:id="@+id/txt_latitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
+
+                    <TextView
+                        android:id="@+id/lbl_user"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_name" />
+
+                    <TextView
+                        android:id="@+id/txt_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
+
+                    <TextView
+                        android:id="@+id/lbl_email"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/email" />
+
+                    <TextView
+                        android:id="@+id/txt_email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_back_stations"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/serial_number"
-                    style="@style/ItemTextViewStyle"/>
+                    android:text="@string/back"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.91"
+                    app:layout_constraintStart_toEndOf="@+id/vertical_layout_station"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.96" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <TextView
-                    android:id="@+id/txt_serial_number"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:text="X" />
-
-                <TextView
-                    android:id="@+id/lbl_station_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/name"
-                    style="@style/ItemTextViewStyle" />
-
-                <TextView
-                    android:id="@+id/txt_station_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:text="X" />
-
-                <TextView
-                    android:id="@+id/lbl_created_at"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/created_at"
-                    style="@style/ItemTextViewStyle"/>
-
-                <TextView
-                    android:id="@+id/txt_created_at"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:text="X" />
-
-                <TextView
-                    android:id="@+id/lbl_model"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/model"
-                    style="@style/ItemTextViewStyle"/>
-
-                <TextView
-                    android:id="@+id/txt_model"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:text="X" />
-
-                <TextView
-                    android:id="@+id/lbl_brand"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/brand"
-                    style="@style/ItemTextViewStyle"/>
-
-                <TextView
-                    android:id="@+id/txt_brand"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:text="X" />
-
-                <TextView
-                    android:id="@+id/lbl_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/status"
-                    style="@style/ItemTextViewStyle"/>
-
-                <TextView
-                    android:id="@+id/txt_status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:text="X" />
-
-                <TextView
-                    android:id="@+id/lbl_longitude"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/longitude"
-                    style="@style/ItemTextViewStyle"/>
-
-                <TextView
-                    android:id="@+id/txt_longitude"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:text="X" />
-
-                <TextView
-                    android:id="@+id/lbl_latitude"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/latitude"
-                    style="@style/ItemTextViewStyle"/>
-
-                <TextView
-                    android:id="@+id/txt_latitude"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:text="X" />
-
-                <TextView
-                    android:id="@+id/lbl_user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/user_name"
-                    style="@style/ItemTextViewStyle"/>
-
-                <TextView
-                    android:id="@+id/txt_user"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:text="X" />
-
-                <TextView
-                    android:id="@+id/lbl_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/email"
-                    style="@style/ItemTextViewStyle"/>
-
-                <TextView
-                    android:id="@+id/txt_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/product_sans_regular"
-                    android:text="X" />
-
-            </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.constraintlayout.widget.ConstraintLayout

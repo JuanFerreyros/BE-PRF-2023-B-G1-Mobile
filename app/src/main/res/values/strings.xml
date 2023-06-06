@@ -36,4 +36,5 @@
     <string name="request">Solicitudes</string>
     <string name="request_station">Solicitud de Estación</string>
     <string name="cancel">Cancelar</string>
+    <string name="back">Volver</string>
 </resources>

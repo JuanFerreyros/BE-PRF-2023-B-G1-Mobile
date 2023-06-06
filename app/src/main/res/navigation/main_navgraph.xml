@@ -56,6 +56,11 @@
         <argument
             android:name="stationSerial"
             app:argType="com.example.be_prf_2023_b_g1_mobile.model.StationResponse" />
+        <action
+            android:id="@+id/action_stationDetailsFragment_to_stationsFragment"
+            app:destination="@id/stationsFragment"
+            app:popUpTo="@id/stationDetailsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/requestDetailsFragment"
@@ -65,5 +70,10 @@
         <argument
             android:name="requestSerial"
             app:argType="com.example.be_prf_2023_b_g1_mobile.model.RequestResponse" />
+        <action
+            android:id="@+id/action_requestDetailsFragment_to_requestsFragment"
+            app:destination="@id/requestsFragment"
+            app:popUpTo="@id/requestDetailsFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
