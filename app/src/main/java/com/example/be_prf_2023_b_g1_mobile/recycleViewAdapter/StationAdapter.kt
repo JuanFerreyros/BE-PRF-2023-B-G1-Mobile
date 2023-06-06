@@ -3,9 +3,12 @@ package com.example.be_prf_2023_b_g1_mobile.recycleViewAdapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.be_prf_2023_b_g1_mobile.R
+import com.example.be_prf_2023_b_g1_mobile.fragments.StationsFragmentDirections
 import com.example.be_prf_2023_b_g1_mobile.model.StationResponse
 
 
@@ -16,6 +19,7 @@ class StationAdapter (
     class StationViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val stationName: TextView = itemView.findViewById(R.id.requestName)
         val stationStatus: TextView = itemView.findViewById(R.id.requestStatus)
+        val stationDetails: ImageView = itemView.findViewById(R.id.img_station_details)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StationViewHolder {
@@ -31,5 +35,9 @@ class StationAdapter (
         holder.stationName.text = station.name
         holder.stationStatus.text = station.status
 
+        holder.stationDetails.setOnClickListener {
+            val action = StationsFragmentDirections.actionStationsFragmentToStationDetailsFragment(station)
+            it.findNavController().navigate(action)
+        }
     }
 }

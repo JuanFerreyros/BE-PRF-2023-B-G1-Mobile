@@ -24,7 +24,7 @@
     <string name="brand">Marca</string>
     <string name="model">Modelo</string>
     <string name="longitude">Longitud</string>
-    <string name="latitude">Latidud</string>
+    <string name="latitude">Latitud</string>
     <string name="user_name">Solicitante</string>
     <string name="created_at">Fecha de Creación</string>
     <string name="approved_at">Fecha de Aprobación</string>
