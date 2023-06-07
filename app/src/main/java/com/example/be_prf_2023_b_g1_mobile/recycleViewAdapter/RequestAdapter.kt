@@ -9,7 +9,6 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.be_prf_2023_b_g1_mobile.R
 import com.example.be_prf_2023_b_g1_mobile.fragments.RequestsFragmentDirections
-import com.example.be_prf_2023_b_g1_mobile.fragments.StationsFragmentDirections
 import com.example.be_prf_2023_b_g1_mobile.model.RequestResponse
 
 class RequestAdapter (
