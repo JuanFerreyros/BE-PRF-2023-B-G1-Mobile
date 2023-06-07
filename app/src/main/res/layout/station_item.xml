@@ -26,8 +26,8 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/requestName"
-                android:layout_width="108dp"
+                android:id="@+id/stationName"
+                android:layout_width="142dp"
                 android:layout_height="26dp"
                 android:layout_marginStart="142dp"
                 android:layout_marginTop="14dp"
@@ -37,15 +37,14 @@
                 android:text="TextView"
                 android:textAlignment="center"
                 android:textColor="@color/black"
-                android:textSize="24sp" 
-                app:layout_constraintBottom_toTopOf="@+id/requestStatus"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/stationStatus"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/img_station_details"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/requestStatus"
+                android:id="@+id/stationStatus"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="156dp"
@@ -59,7 +58,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/requestName" />
+                app:layout_constraintTop_toBottomOf="@+id/stationName" />
 
             <ImageView
                 android:id="@+id/img_station_details"

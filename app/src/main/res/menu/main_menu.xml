@@ -7,16 +7,18 @@
         <item
             android:id="@+id/stationsFragment"
             android:icon="@drawable/ic_stations"
-            android:title="@string/stations" />
+            android:title="@string/stations"
+            android:fontFamily="@font/product_sans_bold" />
         <item
             android:id="@+id/requestsFragment"
             android:icon="@drawable/ic_requests"
-            android:title="@string/requests" />
+            android:title="@string/requests"
+            android:fontFamily="@font/product_sans_bold" />
         <item
             android:id="@+id/mapFragment"
             android:icon="@drawable/ic_map"
-            android:title="@string/map" />
-
+            android:title="@string/map"
+            android:fontFamily="@font/product_sans_bold" />
     </group>
 
 
@@ -26,7 +28,13 @@
                 <item
                     android:id="@+id/profileFragment"
                     android:icon="@drawable/ic_account"
-                    android:title="@string/profile" />
+                    android:title="@string/profile"
+                    android:fontFamily="@font/product_sans_bold" />
+                <item
+                    android:id="@+id/loginActivity"
+                    android:fontFamily="@font/product_sans_bold"
+                    android:icon="@drawable/ic_logout"
+                    android:title="@string/logout" />
             </group>
         </menu>
     </item>
