@@ -3,8 +3,10 @@ package com.example.be_prf_2023_b_g1_mobile.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
@@ -16,6 +18,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var navHostFragment: NavHostFragment
     lateinit var navigationView: NavigationView
+    private lateinit var txtToolbar: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +31,8 @@ class MainActivity : AppCompatActivity() {
         navigationView = findViewById(R.id.nav_view)
         navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+
+        txtToolbar = findViewById(R.id.toolbarTitle)
 
         imgMenu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
@@ -43,8 +48,19 @@ class MainActivity : AppCompatActivity() {
 
         NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
 
-        navController.addOnDestinationChangedListener { _, _, _ ->
+        navController.addOnDestinationChangedListener { _, destination, _ ->
             supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
+            txtToolbar.text = getTitleFromDestination(destination)
+        }
+    }
+
+    private fun getTitleFromDestination(destination: NavDestination): String {
+        val menuItem = navigationView.menu.findItem(destination.id)
+        return when {
+            menuItem != null -> menuItem.title.toString()
+            destination.label.toString() == "fragment_station_details" ||
+                    destination.label.toString() == "fragment_request_details" -> getString(R.string.details)
+            else -> destination.label.toString()
         }
     }
 }

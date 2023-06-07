@@ -35,7 +35,9 @@
     <string name="reject">Rechazar</string>
     <string name="request">Solicitudes</string>
     <string name="request_station">Solicitud de Estación</string>
+    <string name="details">Detalles</string>
     <string name="cancel">Cancelar</string>
     <string name="back">Volver</string>
     <string name="logout">Cerrar Sesión</string>
+    <string name="fragment_title">Titulo</string>
 </resources>
