@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.navigation.findNavController
 import com.example.be_prf_2023_b_g1_mobile.R
@@ -38,7 +39,7 @@ class StationDetailsFragment : Fragment() {
         vista.findViewById<TextView>(R.id.txt_latitude).text = station.latitude.toString()
         vista.findViewById<TextView>(R.id.txt_model).text = station.model
 
-        val btn_back = vista.findViewById<Button>(R.id.btn_back_stations)
+        val btn_back = vista.findViewById<ImageButton>(R.id.btn_back_stations)
 
         btn_back.setOnClickListener{
             val action = StationDetailsFragmentDirections.actionStationDetailsFragmentToStationsFragment()
