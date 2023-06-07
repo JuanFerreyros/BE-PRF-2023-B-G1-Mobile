@@ -60,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             menuItem != null -> menuItem.title.toString()
             destination.label.toString() == "fragment_station_details" ||
                     destination.label.toString() == "fragment_request_details" -> getString(R.string.details)
+            destination.label.toString() == "fragment_new_request" -> getString(R.string.request_station)
             else -> destination.label.toString()
         }
     }
