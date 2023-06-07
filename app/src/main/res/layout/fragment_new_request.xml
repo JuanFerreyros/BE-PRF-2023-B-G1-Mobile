@@ -220,7 +220,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
             <Button
-                android:id="@+id/btn_approve"
+                android:id="@+id/btn_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="79dp"
@@ -230,14 +230,14 @@
                 android:backgroundTint="@color/colorBtnApprove"
                 android:fontFamily="@font/product_sans_bold"
                 android:text="@string/request"
-                app:layout_constraintBottom_toTopOf="@+id/btn_reject"
+                app:layout_constraintBottom_toTopOf="@+id/btn_suspend"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
-                android:id="@+id/btn_reject"
+                android:id="@+id/btn_suspend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="66dp"
@@ -250,7 +250,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_approve" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_edit" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
