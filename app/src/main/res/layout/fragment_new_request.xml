@@ -204,7 +204,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
             <Button
-                android:id="@+id/btn_edit"
+                android:id="@+id/btn_request"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="79dp"
@@ -214,14 +214,14 @@
                 android:backgroundTint="@color/colorBtnApprove"
                 android:fontFamily="@font/product_sans_bold"
                 android:text="@string/request"
-                app:layout_constraintBottom_toTopOf="@+id/btn_suspend"
+                app:layout_constraintBottom_toTopOf="@+id/btn_cancel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
-                android:id="@+id/btn_suspend"
+                android:id="@+id/btn_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="66dp"
@@ -234,7 +234,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_edit" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_request" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
