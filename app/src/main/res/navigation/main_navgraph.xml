@@ -81,4 +81,9 @@
         android:name="com.example.be_prf_2023_b_g1_mobile.activities.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
+    <fragment
+        android:id="@+id/stationEditFragment"
+        android:name="com.example.be_prf_2023_b_g1_mobile.fragments.StationEditFragment"
+        android:label="fragment_station_edit"
+        tools:layout="@layout/fragment_station_edit" />
 </navigation>

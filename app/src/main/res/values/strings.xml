@@ -33,11 +33,15 @@
     <string name="station">Estación</string>
     <string name="approve">Aprobar</string>
     <string name="reject">Rechazar</string>
-    <string name="request">Solicitudes</string>
+    <string name="request">Solicitar</string>
     <string name="request_station">Solicitar Estación</string>
     <string name="details">Detalles</string>
     <string name="cancel">Cancelar</string>
     <string name="back">Volver</string>
     <string name="logout">Cerrar Sesión</string>
     <string name="fragment_title">Titulo</string>
+    <string name="save">Guardar</string>
+    <string name="edit_station">Editar Estación</string>
+    <string name="suspend_station">Inactivar Estación</string>
+    <string name="suspend_msg">¿Esta seguro de inactivar esta Estación?</string>
 </resources>
