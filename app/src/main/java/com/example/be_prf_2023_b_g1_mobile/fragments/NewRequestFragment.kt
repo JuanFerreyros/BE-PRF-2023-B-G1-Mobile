@@ -30,7 +30,7 @@ class NewRequestFragment : Fragment() {
 
         thisView = inflater.inflate(R.layout.fragment_new_request, container, false)
 
-        val  btnReject = thisView.findViewById<Button>(R.id.btn_cancel)
+        val  btnReject = thisView.findViewById<Button>(R.id.btn_suspend)
 
         btnReject.setOnClickListener{
 
@@ -38,7 +38,7 @@ class NewRequestFragment : Fragment() {
             thisView.findNavController().navigate(action)
         }
 
-        val  btnapprove = thisView.findViewById<Button>(R.id.btn_request)
+        val  btnapprove = thisView.findViewById<Button>(R.id.btn_edit)
 
         btnapprove.setOnClickListener{
 

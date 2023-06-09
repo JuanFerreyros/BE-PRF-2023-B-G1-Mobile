@@ -40,4 +40,8 @@
     <string name="back">Volver</string>
     <string name="logout">Cerrar Sesión</string>
     <string name="fragment_title">Titulo</string>
+    <string name="save">Guardar</string>
+    <string name="edit_station">Editar Estación</string>
+    <string name="suspend_station">Inactivar Estación</string>
+    <string name="suspend_msg">¿Esta seguro de inactivar esta Estación?</string>
 </resources>

@@ -201,7 +201,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
             <Button
-                android:id="@+id/btn_cancel"
+                android:id="@+id/btn_suspend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="66dp"
@@ -214,10 +214,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_request" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_edit" />
 
             <Button
-                android:id="@+id/btn_request"
+                android:id="@+id/btn_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="79dp"
@@ -227,7 +227,7 @@
                 android:backgroundTint="@color/colorBtnLogin"
                 android:fontFamily="@font/product_sans_bold"
                 android:text="@string/edit"
-                app:layout_constraintBottom_toTopOf="@+id/btn_cancel"
+                app:layout_constraintBottom_toTopOf="@+id/btn_suspend"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -250,5 +250,11 @@
             tools:ignore="UseAppTint,TouchTargetSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/shadowOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" />
 
 </FrameLayout>
