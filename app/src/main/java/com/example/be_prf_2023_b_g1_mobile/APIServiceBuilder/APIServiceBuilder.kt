@@ -32,7 +32,4 @@ object APIServiceBuilder {
         return retrofit.create(RequestService::class.java)
     }
 
-    fun crateNewRequestService(): NewRequestService{
-        return retrofit.create(NewRequestService::class.java)
-    }
 }

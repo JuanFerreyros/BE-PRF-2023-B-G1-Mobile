@@ -52,7 +52,7 @@ class NewRequestFragment : Fragment() {
 
             val requestParams = NewRequestResponse(serialNumber, name, longitude, latitude, brand, model)
 
-            val service = APIServiceBuilder.crateNewRequestService()
+            val service = APIServiceBuilder.createRequestService()
 
             service.createNewRequest(requestParams).enqueue(
                 object : Callback<NewRequestResponse> {
@@ -65,13 +65,12 @@ class NewRequestFragment : Fragment() {
                             thisView.findNavController().navigate(action)
                     }
 
-                    override fun onFailure(call: Call<List<StationResponse>>, t: Throwable) {
-                        Log.e("RETROFIT",
-                            "An error occurred while requesting stations. ERROR: ${t.message}")
-                    }
                 }
+                    override fun onFailure(call: Call<NewRequestResponse>, t: Throwable) {
+                        Log.e("RETROFIT",
+                            "An error occurred while requesting stations. ERROR: ${t.message}")                    }
 
-            })
+                })
         }
 
         return thisView
