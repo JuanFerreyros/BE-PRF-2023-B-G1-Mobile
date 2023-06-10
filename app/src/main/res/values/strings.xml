@@ -44,4 +44,7 @@
     <string name="edit_station">Editar Estación</string>
     <string name="suspend_station">Inactivar Estación</string>
     <string name="suspend_msg">¿Esta seguro de inactivar esta Estación?</string>
+    <string name="request_sent">Solicitud Enviada</string>
+    <string name="request_sent_msg">Se enviará un Mail a su casilla cuando su solicitud sea resuelta</string>
+    <string name="accept">Aceptar</string>
 </resources>
