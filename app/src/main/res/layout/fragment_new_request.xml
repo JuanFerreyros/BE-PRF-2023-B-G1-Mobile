@@ -204,7 +204,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
             <Button
-                android:id="@+id/btn_edit"
+                android:id="@+id/btn_request"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="79dp"
@@ -234,9 +234,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_edit" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_request" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/shadowOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" />
+
 </FrameLayout>
