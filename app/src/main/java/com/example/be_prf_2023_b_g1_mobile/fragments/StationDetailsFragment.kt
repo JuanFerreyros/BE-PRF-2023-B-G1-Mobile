@@ -100,6 +100,7 @@ class StationDetailsFragment : Fragment() {
                     ) {
                         if (response.isSuccessful) {
                             val updatedStation = response.body()!!
+                            vista.findViewById<TextView>(R.id.txt_station_name).text = updatedStation.name
                             popup.dismiss()
                         } else {
                             val errorBody = response.errorBody()
