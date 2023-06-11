@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_newRequestFragment_to_stationsFragment"
             app:destination="@id/stationsFragment" />
+        <action
+            android:id="@+id/refreshNewRQt"
+            app:destination="@id/newRequestFragment" />
     </fragment>
     <fragment
         android:id="@+id/stationDetailsFragment"
