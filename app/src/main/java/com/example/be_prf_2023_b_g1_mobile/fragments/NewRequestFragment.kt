@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.PopupWindow
+import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.APIServiceBuilder
 import com.example.be_prf_2023_b_g1_mobile.R
@@ -39,6 +40,7 @@ class NewRequestFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
+    
     ): View? {
         thisView = inflater.inflate(R.layout.fragment_new_request, container, false)
         shadowOverlay = thisView.findViewById(R.id.shadowOverlay)
@@ -56,44 +58,38 @@ class NewRequestFragment : Fragment() {
         val btnApprove = thisView.findViewById<Button>(R.id.btn_create)
 
         btnApprove.setOnClickListener {
+            try {
+                val serialNumber = thisView.findViewById<EditText>(R.id.txt_rqt_serial_number).text.toString()
+                val name = thisView.findViewById<EditText>(R.id.txt_rqt_name).text.toString()
+                val longitude = thisView.findViewById<EditText>(R.id.txt_rqt_longitude).text.toString().toDouble()
+                val latitude = thisView.findViewById<EditText>(R.id.txt_rqt_latitude).text.toString().toDouble()
+                val brand = thisView.findViewById<EditText>(R.id.txt_rqt_brand).text.toString()
+                val model = thisView.findViewById<EditText>(R.id.txt_rqt_model).text.toString()
 
-            val serialNumber =
-                thisView.findViewById<EditText>(R.id.txt_rqt_serial_number).text.toString()
-            val name = thisView.findViewById<EditText>(R.id.txt_rqt_name).text.toString()
-            val longitude =
-                thisView.findViewById<EditText>(R.id.txt_rqt_longitude).text.toString().toDouble()
-            val latitude =
-                thisView.findViewById<EditText>(R.id.txt_rqt_latitude).text.toString().toDouble()
-            val brand = thisView.findViewById<EditText>(R.id.txt_rqt_brand).text.toString()
-            val model = thisView.findViewById<EditText>(R.id.txt_rqt_model).text.toString()
+                val requestParams = NewRequestResponse(serialNumber, name, longitude, latitude, brand, model)
 
-            val requestParams =
-                NewRequestResponse(serialNumber, name, longitude, latitude, brand, model)
+                val service = APIServiceBuilder.createRequestService()
 
-            val service = APIServiceBuilder.createRequestService()
-
-            service.createNewRequest(requestParams).enqueue(
-                object : Callback<NewRequestResponse> {
-                    override fun onResponse(
-                        call: Call<NewRequestResponse>,
-                        response: Response<NewRequestResponse>
-                    ) {
+                service.createNewRequest(requestParams).enqueue(object : Callback<NewRequestResponse> {
+                    override fun onResponse(call: Call<NewRequestResponse>, response: Response<NewRequestResponse>) {
                         if (response.isSuccessful) {
                             showPopUpRequestSent()
                         }
-
                     }
 
                     override fun onFailure(call: Call<NewRequestResponse>, t: Throwable) {
-                        Log.e(
-                            "RETROFIT",
-                            "An error occurred while requesting stations. ERROR: ${t.message}"
-                        )
+                        Log.e("RETROFIT", "An error occurred while requesting stations. ERROR: ${t.message}")
                     }
-
                 })
+            } catch (e: NumberFormatException) {
 
+                Toast.makeText(requireContext(), "Error al completar el formulario.", Toast.LENGTH_SHORT).show()
+
+                val action = NewRequestFragmentDirections.refreshNewRQt()
+                thisView.findNavController().navigate(action)
+            }
         }
+
 
         return thisView
     }
