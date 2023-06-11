@@ -16,4 +16,10 @@ interface StationService {
         @Path("station-id") stationId: String,
         @Body requestBody: Map<String, String>
     ): Call<StationResponse>
+
+    @PATCH("users/2/stations/{station-id}/suspend")
+    fun suspendStation(
+        @Path("station-id") stationId: String,
+    ): Call<StationResponse>
+
 }

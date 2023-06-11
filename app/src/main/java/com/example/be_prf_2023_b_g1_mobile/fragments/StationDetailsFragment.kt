@@ -23,6 +23,8 @@ class StationDetailsFragment : Fragment() {
     private lateinit var shadowOverlay: View
     private lateinit var btn_cancel_edit: Button
     private lateinit var btn_save: Button
+    private lateinit var btn_confirm_suspend: Button
+    private lateinit var btn_cancel_suspend: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -63,7 +65,7 @@ class StationDetailsFragment : Fragment() {
 
         val btn_suspend = vista.findViewById<Button>(R.id.btn_suspend)
         btn_suspend.setOnClickListener {
-            mostrarPopupSuspenderEstacion()
+            mostrarPopupSuspenderEstacion(station, it)
         }
 
         return vista
@@ -104,8 +106,8 @@ class StationDetailsFragment : Fragment() {
                             popup.dismiss()
                         } else {
                             val errorBody = response.errorBody()
+                            popup.dismiss()
                         }
-
                     }
 
                     override fun onFailure(call: Call<StationResponse>, t: Throwable) {
@@ -130,12 +132,12 @@ class StationDetailsFragment : Fragment() {
         popup.showAtLocation(view, Gravity.CENTER, 0, 0)
     }
 
-    private fun mostrarPopupSuspenderEstacion() {
+    private fun mostrarPopupSuspenderEstacion(station: StationResponse, view: View) {
         val inflater = LayoutInflater.from(requireContext())
         val popupView = inflater.inflate(R.layout.fragment_station_suspend, null)
 
-        val btn_confirm_suspend = popupView.findViewById<Button>(R.id.btn_confirm_suspend)
-        val btn_cancel_suspend = popupView.findViewById<Button>(R.id.btn_cancel_suspend)
+        btn_confirm_suspend = popupView.findViewById(R.id.btn_confirm_suspend)
+        btn_cancel_suspend = popupView.findViewById(R.id.btn_cancel_suspend)
 
         shadowOverlay.visibility = View.VISIBLE
 
@@ -144,6 +146,30 @@ class StationDetailsFragment : Fragment() {
         }
 
         btn_confirm_suspend.setOnClickListener {
+            val service = APIServiceBuilder.createStationService()
+
+            service.suspendStation(station._id).enqueue(
+                object : Callback<StationResponse> {
+                    override fun onResponse(
+                        call: Call<StationResponse>,
+                        response: Response<StationResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val suspendedStation = response.body()!!
+                            vista.findViewById<TextView>(R.id.txt_status).text = suspendedStation.status
+                            popup.dismiss()
+                        } else {
+                            val errorBody = response.errorBody()
+                            popup.dismiss()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<StationResponse>, t: Throwable) {
+                        Log.e("RETROFIT",
+                            "An error occurred while updating the station. ERROR: ${t.message}")
+                    }
+                }
+            )
         }
 
         popup = PopupWindow(
