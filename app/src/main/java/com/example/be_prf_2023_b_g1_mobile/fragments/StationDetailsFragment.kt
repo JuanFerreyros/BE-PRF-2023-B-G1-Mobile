@@ -1,6 +1,7 @@
 package com.example.be_prf_2023_b_g1_mobile.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,14 +9,22 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.navigation.findNavController
+import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.APIServiceBuilder
 import com.example.be_prf_2023_b_g1_mobile.R
-
+import com.example.be_prf_2023_b_g1_mobile.model.StationResponse
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class StationDetailsFragment : Fragment() {
 
     lateinit var vista: View
     private lateinit var popup: PopupWindow
     private lateinit var shadowOverlay: View
+    private lateinit var btn_cancel_edit: Button
+    private lateinit var btn_save: Button
+    private lateinit var btn_confirm_suspend: Button
+    private lateinit var btn_cancel_suspend: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,24 +60,24 @@ class StationDetailsFragment : Fragment() {
 
         val btn_edit = vista.findViewById<Button>(R.id.btn_edit)
         btn_edit.setOnClickListener {
-            mostrarPopupEditarEstacion()
+            mostrarPopupEditarEstacion(station, it)
         }
 
         val btn_suspend = vista.findViewById<Button>(R.id.btn_suspend)
         btn_suspend.setOnClickListener {
-            mostrarPopupSuspenderEstacion()
+            mostrarPopupSuspenderEstacion(station, it)
         }
 
         return vista
     }
 
-    private fun mostrarPopupEditarEstacion() {
+    private fun mostrarPopupEditarEstacion(station: StationResponse, view: View) {
         val inflater = LayoutInflater.from(requireContext())
         val popupView = inflater.inflate(R.layout.fragment_station_edit, null)
 
         val editName = popupView.findViewById<EditText>(R.id.edit_txt_name)
-        val btn_save = popupView.findViewById<Button>(R.id.btn_save)
-        val btn_cancel_edit = popupView.findViewById<Button>(R.id.btn_cancel_edit)
+        btn_save = popupView.findViewById(R.id.btn_save)
+        btn_cancel_edit = popupView.findViewById(R.id.btn_cancel_edit)
 
         shadowOverlay.visibility = View.VISIBLE
 
@@ -78,6 +87,35 @@ class StationDetailsFragment : Fragment() {
 
         btn_save.setOnClickListener {
             val textoIngresado = editName.text.toString()
+
+            val requestBody = mapOf(
+                "name" to textoIngresado
+            )
+
+            val service = APIServiceBuilder.createStationService()
+
+            service.updateStation(station._id, requestBody).enqueue(
+                object : Callback<StationResponse> {
+                    override fun onResponse(
+                        call: Call<StationResponse>,
+                        response: Response<StationResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val updatedStation = response.body()!!
+                            vista.findViewById<TextView>(R.id.txt_station_name).text = updatedStation.name
+                            popup.dismiss()
+                        } else {
+                            val errorBody = response.errorBody()
+                            popup.dismiss()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<StationResponse>, t: Throwable) {
+                        Log.e("RETROFIT",
+                            "An error occurred while updating the station. ERROR: ${t.message}")
+                    }
+                }
+            )
         }
 
         popup = PopupWindow(
@@ -94,12 +132,12 @@ class StationDetailsFragment : Fragment() {
         popup.showAtLocation(view, Gravity.CENTER, 0, 0)
     }
 
-    private fun mostrarPopupSuspenderEstacion() {
+    private fun mostrarPopupSuspenderEstacion(station: StationResponse, view: View) {
         val inflater = LayoutInflater.from(requireContext())
         val popupView = inflater.inflate(R.layout.fragment_station_suspend, null)
 
-        val btn_confirm_suspend = popupView.findViewById<Button>(R.id.btn_confirm_suspend)
-        val btn_cancel_suspend = popupView.findViewById<Button>(R.id.btn_cancel_suspend)
+        btn_confirm_suspend = popupView.findViewById(R.id.btn_confirm_suspend)
+        btn_cancel_suspend = popupView.findViewById(R.id.btn_cancel_suspend)
 
         shadowOverlay.visibility = View.VISIBLE
 
@@ -108,6 +146,30 @@ class StationDetailsFragment : Fragment() {
         }
 
         btn_confirm_suspend.setOnClickListener {
+            val service = APIServiceBuilder.createStationService()
+
+            service.suspendStation(station._id).enqueue(
+                object : Callback<StationResponse> {
+                    override fun onResponse(
+                        call: Call<StationResponse>,
+                        response: Response<StationResponse>
+                    ) {
+                        if (response.isSuccessful) {
+                            val suspendedStation = response.body()!!
+                            vista.findViewById<TextView>(R.id.txt_status).text = suspendedStation.status
+                            popup.dismiss()
+                        } else {
+                            val errorBody = response.errorBody()
+                            popup.dismiss()
+                        }
+                    }
+
+                    override fun onFailure(call: Call<StationResponse>, t: Throwable) {
+                        Log.e("RETROFIT",
+                            "An error occurred while updating the station. ERROR: ${t.message}")
+                    }
+                }
+            )
         }
 
         popup = PopupWindow(
