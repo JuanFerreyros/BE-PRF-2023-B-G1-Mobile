@@ -51,6 +51,7 @@ class StationDetailsFragment : Fragment() {
         vista.findViewById<TextView>(R.id.txt_latitude).text = station.latitude.toString()
         vista.findViewById<TextView>(R.id.txt_model).text = station.model
 
+
         val btn_back = vista.findViewById<ImageButton>(R.id.btn_back_stations)
 
         btn_back.setOnClickListener{
@@ -68,6 +69,11 @@ class StationDetailsFragment : Fragment() {
             mostrarPopupSuspenderEstacion(station, it)
         }
 
+        if (station.status == "INACTIVE"){
+            btn_suspend.isEnabled = false
+            btn_edit.isEnabled = false
+        }
+
         return vista
     }
 
@@ -76,6 +82,7 @@ class StationDetailsFragment : Fragment() {
         val popupView = inflater.inflate(R.layout.fragment_station_edit, null)
 
         val editName = popupView.findViewById<EditText>(R.id.edit_txt_name)
+        editName.setText(station.name)
         btn_save = popupView.findViewById(R.id.btn_save)
         btn_cancel_edit = popupView.findViewById(R.id.btn_cancel_edit)
 
