@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.navigation.findNavController
 import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.APIServiceBuilder
+import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.JWTDecoderService
 import com.example.be_prf_2023_b_g1_mobile.R
 import com.example.be_prf_2023_b_g1_mobile.model.StationResponse
 import retrofit2.Call
@@ -101,7 +102,7 @@ class StationDetailsFragment : Fragment() {
 
             val service = APIServiceBuilder.createStationService()
 
-            service.updateStation(station._id, requestBody).enqueue(
+            service.updateStation(station._id, requestBody, JWTDecoderService.context.id).enqueue(
                 object : Callback<StationResponse> {
                     override fun onResponse(
                         call: Call<StationResponse>,
@@ -155,7 +156,7 @@ class StationDetailsFragment : Fragment() {
         btn_confirm_suspend.setOnClickListener {
             val service = APIServiceBuilder.createStationService()
 
-            service.suspendStation(station._id).enqueue(
+            service.suspendStation(station._id, JWTDecoderService.context.id).enqueue(
                 object : Callback<StationResponse> {
                     override fun onResponse(
                         call: Call<StationResponse>,
@@ -165,6 +166,9 @@ class StationDetailsFragment : Fragment() {
                             val suspendedStation = response.body()!!
                             vista.findViewById<TextView>(R.id.txt_status).text = suspendedStation.status
                             popup.dismiss()
+                            val action = StationDetailsFragmentDirections.actionStationDetailsFragmentToStationsFragment()
+                            vista.findNavController().navigate(action)
+
                         } else {
                             val errorBody = response.errorBody()
                             popup.dismiss()

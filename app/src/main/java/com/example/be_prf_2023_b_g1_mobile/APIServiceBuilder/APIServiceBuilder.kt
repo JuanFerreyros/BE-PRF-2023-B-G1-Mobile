@@ -3,6 +3,8 @@ package com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.util.Base64
+import com.google.gson.JsonParser
 
 object APIServiceBuilder {
     private const val BASE_URL = "http://192.168.0.229:8080/api/v1/"

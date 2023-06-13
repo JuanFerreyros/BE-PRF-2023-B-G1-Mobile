@@ -6,13 +6,14 @@ import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface RequestService {
-    @GET("users/2/requests")
-    fun getRequests(): Call<List<RequestResponse>>
+    @GET("users/{id}/requests")
+    fun getRequests(@Path("id") id:String): Call<List<RequestResponse>>
 
-    @POST("users/2/requests")
-    fun createNewRequest(@Body params: NewRequestResponse) : Call<NewRequestResponse>
+    @POST("users/{id}/requests")
+    fun createNewRequest(@Body params: NewRequestResponse, @Path("id") id:String) : Call<NewRequestResponse>
 }
 
 

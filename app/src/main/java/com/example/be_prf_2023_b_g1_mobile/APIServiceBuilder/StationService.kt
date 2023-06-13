@@ -8,18 +8,20 @@ import retrofit2.http.PATCH
 import retrofit2.http.Path
 
 interface StationService {
-    @GET("users/2/stations")
-    fun getStations(): Call<List<StationResponse>>
+    @GET("users/{id}/stations")
+    fun getStations(@Path("id") id:String): Call<List<StationResponse>>
 
-    @PATCH("users/2/stations/{station-id}/rename")
+    @PATCH("users/{id}/stations/{station-id}/rename")
     fun updateStation(
         @Path("station-id") stationId: String,
-        @Body requestBody: Map<String, String>
+        @Body requestBody: Map<String, String>,
+        @Path("id") id:String
     ): Call<StationResponse>
 
-    @PATCH("users/2/stations/{station-id}/suspend")
+    @PATCH("users/{id}/stations/{station-id}/suspend")
     fun suspendStation(
         @Path("station-id") stationId: String,
+        @Path("id") id:String
     ): Call<StationResponse>
 
 }

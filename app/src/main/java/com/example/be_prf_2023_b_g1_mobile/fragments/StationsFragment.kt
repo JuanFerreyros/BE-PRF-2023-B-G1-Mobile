@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.APIServiceBuilder
+import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.JWTDecoderService
 import com.example.be_prf_2023_b_g1_mobile.model.StationResponse
 import com.example.be_prf_2023_b_g1_mobile.R
 import com.example.be_prf_2023_b_g1_mobile.recycleViewAdapter.StationAdapter
@@ -39,7 +40,7 @@ class StationsFragment : Fragment() {
 
         val service = APIServiceBuilder.createStationService()
 
-        service.getStations().enqueue(
+        service.getStations(JWTDecoderService.context.id).enqueue(
             object : Callback<List<StationResponse>> {
                 override fun onResponse(
                     call: Call<List<StationResponse>>,

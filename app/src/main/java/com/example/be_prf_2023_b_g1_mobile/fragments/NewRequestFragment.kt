@@ -13,6 +13,7 @@ import android.widget.PopupWindow
 import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.APIServiceBuilder
+import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.JWTDecoderService
 import com.example.be_prf_2023_b_g1_mobile.R
 import com.example.be_prf_2023_b_g1_mobile.model.NewRequestResponse
 import com.example.be_prf_2023_b_g1_mobile.model.StationResponse
@@ -70,7 +71,7 @@ class NewRequestFragment : Fragment() {
 
                 val service = APIServiceBuilder.createRequestService()
 
-                service.createNewRequest(requestParams).enqueue(object : Callback<NewRequestResponse> {
+                service.createNewRequest(requestParams,JWTDecoderService.context.id).enqueue(object : Callback<NewRequestResponse> {
                     override fun onResponse(call: Call<NewRequestResponse>, response: Response<NewRequestResponse>) {
                         if (response.isSuccessful) {
                             showPopUpRequestSent()
