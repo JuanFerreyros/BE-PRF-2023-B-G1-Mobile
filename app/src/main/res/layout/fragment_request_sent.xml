@@ -5,11 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#00F8F4EA"
-    tools:context=".fragments.StationEditFragment">
+    tools:context=".fragments.RequestSent">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/requestSent_cardView"
         android:layout_width="380dp"
-        android:layout_height="130dp"
+        android:layout_height="145dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -27,59 +28,45 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/txt_edit_station"
+                android:id="@+id/txt_request_sent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/product_sans_bold"
-                android:text="@string/edit_station"
+                android:text="@string/request_sent"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/edit_txt_name"
-                android:layout_width="0dp"
-                android:layout_height="38dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
+            <TextView
+                android:id="@+id/txt_message"
+                android:layout_width="333dp"
+                android:layout_height="47dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
                 android:fontFamily="@font/product_sans_regular"
-                android:inputType="textPersonName"
-                android:text="@string/name"
+                android:text="@string/request_sent_msg"
+                android:textColor="#000000"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_edit_station" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_request_sent" />
 
             <Button
-                android:id="@+id/btn_save"
+                android:id="@+id/btn_accept_sent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginStart="220dp"
                 android:layout_marginBottom="6dp"
                 android:backgroundTint="@color/colorBtnLogin"
                 android:fontFamily="@font/product_sans_bold"
-                android:text="@string/save"
+                android:gravity="center"
+                android:text="@string/accept"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btn_cancel_edit" />
-
-            <Button
-                android:id="@+id/btn_cancel_edit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="132dp"
-                android:layout_marginEnd="3dp"
-                android:layout_marginBottom="6dp"
-                android:backgroundTint="#F44336"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/cancel"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btn_save"
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

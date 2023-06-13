@@ -27,35 +27,35 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/txt_edit_station"
+                android:id="@+id/txt_suspend_station"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="6dp"
                 android:fontFamily="@font/product_sans_bold"
-                android:text="@string/edit_station"
+                android:text="@string/suspend_station"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/edit_txt_name"
-                android:layout_width="0dp"
-                android:layout_height="38dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="16dp"
-                android:ems="10"
+            <TextView
+                android:id="@+id/txt_message"
+                android:layout_width="333dp"
+                android:layout_height="29dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="24dp"
                 android:fontFamily="@font/product_sans_regular"
-                android:inputType="textPersonName"
-                android:text="@string/name"
+                android:text="@string/suspend_msg"
+                android:textColor="#000000"
+                android:textSize="19sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_edit_station" />
+                app:layout_constraintTop_toBottomOf="@+id/txt_suspend_station" />
 
             <Button
-                android:id="@+id/btn_save"
+                android:id="@+id/btn_confirm_suspend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="3dp"
@@ -63,23 +63,23 @@
                 android:layout_marginBottom="6dp"
                 android:backgroundTint="@color/colorBtnLogin"
                 android:fontFamily="@font/product_sans_bold"
-                android:text="@string/save"
+                android:text="@string/suspend"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btn_cancel_edit" />
+                app:layout_constraintStart_toEndOf="@+id/btn_cancel_suspend" />
 
             <Button
-                android:id="@+id/btn_cancel_edit"
+                android:id="@+id/btn_cancel_suspend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="132dp"
+                android:layout_marginStart="124dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="6dp"
                 android:backgroundTint="#F44336"
                 android:fontFamily="@font/product_sans_bold"
                 android:text="@string/cancel"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btn_save"
+                app:layout_constraintEnd_toStartOf="@+id/btn_confirm_suspend"
                 app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

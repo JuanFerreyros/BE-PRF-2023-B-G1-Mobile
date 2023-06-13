@@ -5,398 +5,185 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackgroundLight"
-    tools:context=".fragments.RequestFragment">
+    tools:context=".fragments.RequestDetailsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text_details"
-            android:layout_width="211dp"
-            android:layout_height="29dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView2"
+            android:layout_width="379dp"
+            android:layout_height="456dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="184dp"
-            android:fontFamily="@font/product_sans_bold"
-            android:text="@string/request_details"
-            android:textColor="#000000"
-            android:textSize="20sp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="22dp"
+            app:cardBackgroundColor="#D7E1F0"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_back_requests"
+            android:paddingTop="20dp">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="379dp"
-        android:layout_height="456dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="10dp"
-        app:cardBackgroundColor="#D7E1F0"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_details">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+                <LinearLayout
+                    android:id="@+id/vertical_layout_request"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:layout_editor_absoluteY="5dp">
 
-            <TextView
-                android:id="@+id/lbl_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="136dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/user_name"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/txt_user_name"
-                app:layout_constraintEnd_toStartOf="@+id/txt_longitude"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/lbl_serial_number"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/serial_number" />
 
-            <TextView
-                android:id="@+id/txt_user_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:text="X"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_email"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_user_name" />
+                    <TextView
+                        android:id="@+id/txt_serial_number"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
 
-            <TextView
-                android:id="@+id/lbl_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/station"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/txt_name"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_created_at" />
+                    <TextView
+                        android:id="@+id/lbl_station_name"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name" />
 
-            <TextView
-                android:id="@+id/lbl_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/email"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/txt_email"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_user_name" />
+                    <TextView
+                        android:id="@+id/txt_station_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
 
-            <TextView
-                android:id="@+id/txt_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:text="X"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_created_at"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_email" />
+                    <TextView
+                        android:id="@+id/lbl_created_at"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/created_at" />
 
-            <TextView
-                android:id="@+id/lbl_created_at"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/created_at"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/txt_created_at"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_email" />
+                    <TextView
+                        android:id="@+id/txt_created_at"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
 
-            <TextView
-                android:id="@+id/txt_created_at"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:text="X"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_name"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_created_at" />
+                    <TextView
+                        android:id="@+id/lbl_model"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/model" />
 
-            <TextView
-                android:id="@+id/lbl_serial_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/serial_number"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/txt_serial_number"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+                    <TextView
+                        android:id="@+id/txt_model"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
 
-            <TextView
-                android:id="@+id/txt_serial_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:text="X"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_brand"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_serial_number" />
+                    <TextView
+                        android:id="@+id/lbl_brand"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/brand" />
 
-            <TextView
-                android:id="@+id/lbl_brand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/brand"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/txt_brand"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_serial_number" />
+                    <TextView
+                        android:id="@+id/txt_brand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
 
-            <TextView
-                android:id="@+id/txt_brand"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:text="X"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_model"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_brand" />
+                    <TextView
+                        android:id="@+id/lbl_status"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/status" />
 
-            <TextView
-                android:id="@+id/lbl_model"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/model"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/txt_model"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_brand" />
+                    <TextView
+                        android:id="@+id/txt_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
 
-            <TextView
-                android:id="@+id/txt_model"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="62dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:text="X"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_model" />
+                    <TextView
+                        android:id="@+id/lbl_longitude"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/longitude" />
 
-            <TextView
-                android:id="@+id/txt_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:text="X"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_serial_number"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_name" />
+                    <TextView
+                        android:id="@+id/txt_longitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
 
-            <TextView
-                android:id="@+id/lbl_longitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="123dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/longitude"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/txt_longitude"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                    <TextView
+                        android:id="@+id/lbl_latitude"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/latitude" />
 
-            <TextView
-                android:id="@+id/txt_longitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="172dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:text="X"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_latitude"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_longitude"
-                app:layout_constraintVertical_bias="0.454" />
+                    <TextView
+                        android:id="@+id/txt_latitude"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
 
-            <TextView
-                android:id="@+id/lbl_latitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="131dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/latitude"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/txt_latitude"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_longitude" />
+                    <TextView
+                        android:id="@+id/lbl_user"
+                        style="@style/ItemTextViewStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/user_name" />
 
-            <TextView
-                android:id="@+id/txt_latitude"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="172dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:text="X"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_status"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_latitude" />
+                    <TextView
+                        android:id="@+id/txt_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/product_sans_regular"
+                        android:text="X" />
 
-            <TextView
-                android:id="@+id/lbl_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="136dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/status"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/txt_status"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_latitude" />
+                </LinearLayout>
 
-            <TextView
-                android:id="@+id/txt_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="172dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:text="X"
-                app:layout_constraintBottom_toTopOf="@+id/lbl_approved_at"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_status" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/lbl_approved_at"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="45dp"
-                android:layout_marginBottom="5dp"
-                android:fontFamily="@font/product_sans_bold"
-                android:text="@string/approved_at"
-                android:textColor="#000000"
-                app:layout_constraintBottom_toTopOf="@+id/txt_approved_at"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_status" />
+        </androidx.cardview.widget.CardView>
 
-            <TextView
-                android:id="@+id/txt_approved_at"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="172dp"
-                android:fontFamily="@font/product_sans_regular"
-                android:text="X"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lbl_approved_at" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="247dp"
-        android:layout_height="137dp"
-        android:layout_marginStart="82dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="82dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2">
-
-        <Button
-            android:id="@+id/btn_approve"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="79dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="80dp"
-            android:layout_marginBottom="8dp"
-            android:backgroundTint="@color/colorBtnApprove"
-            android:fontFamily="@font/product_sans_bold"
-            android:text="@string/approve"
-            app:layout_constraintBottom_toTopOf="@+id/btn_reject"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ImageButton
+            android:id="@+id/btn_back_requests"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="#000000"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="18dp"
+            app:layout_constraintBottom_toTopOf="@id/cardView2"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <Button
-            android:id="@+id/btn_reject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="66dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="66dp"
-            android:layout_marginBottom="16dp"
-            android:backgroundTint="#F44336"
-            android:fontFamily="@font/product_sans_bold"
-            android:text="@string/reject"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_approve" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            tools:ignore="UseAppTint,TouchTargetSizeCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

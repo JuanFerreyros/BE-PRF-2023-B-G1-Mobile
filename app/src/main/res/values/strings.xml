@@ -24,7 +24,7 @@
     <string name="brand">Marca</string>
     <string name="model">Modelo</string>
     <string name="longitude">Longitud</string>
-    <string name="latitude">Latidud</string>
+    <string name="latitude">Latitud</string>
     <string name="user_name">Solicitante</string>
     <string name="created_at">Fecha de Creación</string>
     <string name="approved_at">Fecha de Aprobación</string>
@@ -33,7 +33,18 @@
     <string name="station">Estación</string>
     <string name="approve">Aprobar</string>
     <string name="reject">Rechazar</string>
-    <string name="request">Solicitudes</string>
-    <string name="request_station">Solicitud de estaciones</string>
+    <string name="request">Solicitar</string>
+    <string name="request_station">Solicitar Estación</string>
+    <string name="details">Detalles</string>
     <string name="cancel">Cancelar</string>
+    <string name="back">Volver</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="fragment_title">Titulo</string>
+    <string name="save">Guardar</string>
+    <string name="edit_station">Editar Estación</string>
+    <string name="suspend_station">Inactivar Estación</string>
+    <string name="suspend_msg">¿Esta seguro de inactivar esta Estación?</string>
+    <string name="request_sent">Solicitud Enviada</string>
+    <string name="request_sent_msg">Se enviará un Mail a su casilla cuando su solicitud sea resuelta</string>
+    <string name="accept">Aceptar</string>
 </resources>

@@ -12,28 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text_details"
-            android:layout_width="211dp"
-            android:layout_height="29dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="184dp"
-            android:fontFamily="@font/product_sans_bold"
-            android:text="@string/request_station"
-            android:textColor="#000000"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView2"
             android:layout_width="379dp"
             android:layout_height="456dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="23dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="#D7E1F0"
@@ -42,7 +25,7 @@
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_details">
+            app:layout_constraintTop_toTopOf="parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout_Solicitud"
@@ -73,6 +56,7 @@
                     android:fontFamily="@font/product_sans_regular"
                     android:hint="@string/name"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/rqt_name"
                     app:layout_constraintTop_toTopOf="@+id/rqt_name" />
 
@@ -220,7 +204,7 @@
             app:layout_constraintTop_toBottomOf="@+id/cardView2">
 
             <Button
-                android:id="@+id/btn_approve"
+                android:id="@+id/btn_create"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="79dp"
@@ -230,14 +214,14 @@
                 android:backgroundTint="@color/colorBtnApprove"
                 android:fontFamily="@font/product_sans_bold"
                 android:text="@string/request"
-                app:layout_constraintBottom_toTopOf="@+id/btn_reject"
+                app:layout_constraintBottom_toTopOf="@+id/btn_cancel"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
-                android:id="@+id/btn_reject"
+                android:id="@+id/btn_cancel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="66dp"
@@ -250,9 +234,16 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btn_approve" />
+                app:layout_constraintTop_toBottomOf="@+id/btn_create" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/shadowOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" />
+
 </FrameLayout>
