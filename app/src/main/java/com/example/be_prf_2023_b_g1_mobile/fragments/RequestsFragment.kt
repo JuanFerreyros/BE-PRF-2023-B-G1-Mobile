@@ -10,6 +10,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.APIServiceBuilder
+import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.JWTDecoderService
 import com.example.be_prf_2023_b_g1_mobile.APIServiceBuilder.RequestService
 import com.example.be_prf_2023_b_g1_mobile.R
 import com.example.be_prf_2023_b_g1_mobile.model.RequestResponse
@@ -41,7 +42,7 @@ class RequestsFragment : Fragment() {
 
         val service = APIServiceBuilder.createRequestService()
 
-        service.getRequests().enqueue(
+        service.getRequests(JWTDecoderService.context.id).enqueue(
             object : Callback<List<RequestResponse>> {
                 override fun onResponse(
                     call: Call<List<RequestResponse>>,
